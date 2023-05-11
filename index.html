@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список трат на комплектующие для компьютера</title>
+    <style>
+    body {
+    font-family: Comic Sans MS;
+    }
+
+    header {
+    background-color: #7B68EE;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    </style>
+</head>
+<body>
+<header>
+<a>Список трат на комплектующие для компьютера</a>
+</header>
+<p>
+Введите название и цену:
+</p>
+<form method="post" action="/add_price">
+    <input type="text" name="text">
+    <input type="float" name="price">
+    <button type="submit">Добавить в список</button>
+</form>
+
+<div>
+<form method="post" action="/clear">
+    <button type="submit">Clear</button>
+</form>
+</div>
+
+<h3>Список трат</h3>
+{% for message in messages %}
+<div>{{ message.text }}
+    {% for price in message.prices %}
+        <b> #{{ price.text }} </b>
+    {% endfor %}
+</div>
+{% endfor %}
+
+</body>
+</html>
+
+
